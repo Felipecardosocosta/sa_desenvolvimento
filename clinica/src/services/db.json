@@ -1,0 +1,192 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "joao@email.com",
+      "password": "a12345678",
+      "name": "joao"
+    },
+    {
+      "email": "felipe@gmail.com",
+      "password": "123456789",
+      "id": "NFr27l2UNsQ"
+    },
+    {
+      "email": "felipe1@gmail.com",
+      "password": "a12345678",
+      "id": "BoPI6Prg5tM"
+    },
+    {
+      "email": "felip11e@gmail.com",
+      "password": "f12345678",
+      "id": "xUDrJ9nfnaU"
+    },
+    {
+      "email": "felipe1ss@gmail.com",
+      "password": "a12345678",
+      "id": "Y5lNYesbTpA"
+    },
+    {
+      "email": "felipe@gmail.com",
+      "password": "fd1234567",
+      "id": "GZ0cbyOzfDQ"
+    },
+    {
+      "email": "admin@admin.com",
+      "password": "adnim1234567",
+      "id": "v7u3WACD1tk"
+    }
+  ],
+  "consults": [
+    {
+      "patientId": "1",
+      "reason": "Consulta de rotina",
+      "date": "2023-03-15",
+      "time": "10:00",
+      "description": "Consulta de rotina",
+      "medication": "Paracetamol",
+      "dosagePrecautions": "Tomar 1 comprimido a cada 8 horas",
+      "id": "1"
+    },
+    {
+      "patientId": "1",
+      "reason": "jhtfgf",
+      "date": "2026-06-10",
+      "time": "23:49",
+      "description": "kyfhmgdhd",
+      "medication": ",kjgkjg",
+      "dosagePrecautions": "nbj.kjb;lkhj",
+      "id": "piThs9cYlWU"
+    }
+  ],
+  "exams": [
+    {
+      "patientId": "1",
+      "name": "Exame de Sangue",
+      "date": "2023-03-10",
+      "time": "09:00",
+      "type": "Lorem",
+      "laboratory": "Laboratório A",
+      "documentUrl": "http://exemplo.com/documento",
+      "result": "Lorem",
+      "id": "1"
+    },
+    {
+      "patientId": "1",
+      "name": "efwef",
+      "date": "2026-06-16",
+      "time": "20:45",
+      "laboratory": "wefwefwef",
+      "documentUrl": "wefwefwef",
+      "result": "",
+      "type": "wefwefwef",
+      "id": "8dc_JJulCpk"
+    },
+    {
+      "patientId": "1",
+      "name": "sedfgseg",
+      "date": "2026-06-16",
+      "time": "20:46",
+      "laboratory": "wegwegwefg",
+      "documentUrl": "wefwefwefwef",
+      "result": "wefwefwef",
+      "type": "wefwefwefg",
+      "id": "plMaTL4yBy0"
+    },
+    {
+      "patientId": "2",
+      "name": "wefwefwef",
+      "date": "2026-06-16",
+      "time": "20:47",
+      "laboratory": "wefwefwef",
+      "documentUrl": "wefwefwefwef",
+      "result": "wefwefwef",
+      "type": "wefwefwefwef",
+      "id": "VKZcUH59rAE"
+    }
+  ],
+  "patients": [
+    {
+      "id": "1",
+      "fullName": "Maria Silva",
+      "gender": "Feminino",
+      "birthdate": "1990-05-15",
+      "cpf": "123.456.789-00",
+      "rg": "12.345.678-9",
+      "maritalStatus": "Solteira",
+      "phone": "1234-5678",
+      "email": "maria.silva@gmail.com",
+      "birthplace": "São Paulo",
+      "emergencyContact": "(48) 1234-5678",
+      "allergies": "Nenhuma",
+      "specialCare": "Nenhum",
+      "healthInsurance": "unimed",
+      "insuranceValidity": "2025-12-31",
+      "address": {
+        "cep": "12345-678",
+        "city": "São Paulo",
+        "state": "SP",
+        "street": "Rua A",
+        "number": "123",
+        "complement": "Apto 1",
+        "neighborhood": "Centro",
+        "reference": "Perto da praça"
+      }
+    },
+    {
+      "id": "2",
+      "fullName": "João Souza",
+      "gender": "Masculino",
+      "birthdate": "1985-10-20",
+      "cpf": "987.654.321-00",
+      "rg": "98.765.432-1",
+      "maritalStatus": "Casado",
+      "phone": "9876-5432",
+      "email": "joao.souza@gmail.com",
+      "birthplace": "Rio de Janeiro",
+      "emergencyContact": "(21) 9876-5432",
+      "allergies": "Nenhuma",
+      "specialCare": "Nenhum",
+      "healthInsurance": "unimed",
+      "insuranceValidity": "2025-12-31",
+      "address": {
+        "cep": "23456-789",
+        "city": "Rio de Janeiro",
+        "state": "RJ",
+        "street": "Rua B",
+        "number": "456",
+        "complement": "Apto 2",
+        "neighborhood": "Centro",
+        "reference": "Perto da praça"
+      }
+    },
+    {
+      "id": "3",
+      "fullName": "Ana Oliveira",
+      "gender": "Feminino",
+      "birthdate": "1992-03-10",
+      "cpf": "456.789.123-00",
+      "rg": "45.678.912-3",
+      "maritalStatus": "Solteira",
+      "phone": "4567-8912",
+      "email": "ana.oliveira@gmail.com",
+      "birthplace": "Belo Horizonte",
+      "emergencyContact": "(31) 4567-8912",
+      "allergies": "Nenhuma",
+      "specialCare": "Nenhum",
+      "healthInsurance": "unimed",
+      "insuranceValidity": "2025-12-31",
+      "address": {
+        "cep": "34567-890",
+        "city": "Belo Horizonte",
+        "state": "MG",
+        "street": "Rua C",
+        "number": "789",
+        "complement": "Apto 3",
+        "neighborhood": "Centro",
+        "reference": "Perto da praça"
+      }
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
