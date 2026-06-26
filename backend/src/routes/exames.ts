@@ -5,7 +5,7 @@ import { Role } from "../prisma/generated/prisma/enums";
 
 const examesRouter = Router()
 
-examesRouter.use(roleMiddleware([Role.ADMIN]))
+// examesRouter.use(roleMiddleware([Role.ADMIN]))
 
 examesRouter.get('/exames', async (req, res) => {
   

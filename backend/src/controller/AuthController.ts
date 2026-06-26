@@ -1,12 +1,12 @@
 import type { Response, Request } from "express"
 
 import type { Usuario } from "../prisma/generated/prisma/client";
-import { authService } from "../services/AuthServices";
+import { AuthService, authService } from "../services/AuthServices";
 
 
 
 class AuthController {
-    constructor(private readonly service: any) {
+    constructor(private readonly service: AuthService) {
         this.service = service
 
     }
@@ -20,7 +20,7 @@ class AuthController {
 
             return res.status(201).json({
                 message: "Usuario criado com sucesso",
-                data: usuarioCadastrado
+                usuario: usuarioCadastrado
             })
 
         } catch (error) {

@@ -20,7 +20,7 @@ class ConsultController {
 
                 return res.status(200).json({
                     message:"Nao tem consultas cadastradas",
-                    data:consultaBuscados
+                    consulta:consultaBuscados
                 })
                 
             }
@@ -28,7 +28,7 @@ class ConsultController {
             
             return res.status(200).json({
                 message:"Consultas encontradas",
-                data:consultaBuscados
+                consulta:consultaBuscados
             })
 
         } catch (error) {
@@ -50,7 +50,7 @@ class ConsultController {
             if (consulta) {
                 return res.status(200).json({
                     message:"Consulta encontrada",
-                    data:consulta
+                    consulta:consulta
                 })
                 
             }
@@ -79,7 +79,7 @@ class ConsultController {
 
             return res.status(200).json({
                 message:"Consulta deletada",
-                data:consultaDeletada
+                consulta:consultaDeletada
             }
         )
             
@@ -101,7 +101,7 @@ class ConsultController {
 
             return res.status(201).json({
                 message: "Exame criado com sucesso",
-                data: consultaCadastrada
+                consulta: consultaCadastrada
             })
 
         } catch (error) {
@@ -127,7 +127,7 @@ class ConsultController {
 
             return res.status(200).json({
                 message:"Dados Atualizados",
-                data:dadosAtualizados
+                consulta:dadosAtualizados
                 
             });
             

@@ -20,7 +20,7 @@ class ExameController {
 
                 return res.status(200).json({
                     message:"Nao tem Exame cadastrados",
-                    data:examesBuscados
+                    exames:examesBuscados
                 })
                 
             }
@@ -28,7 +28,7 @@ class ExameController {
             
             return res.status(200).json({
                 message:"Exame encontrados",
-                data:examesBuscados
+                exames:examesBuscados
             })
 
         } catch (error) {
@@ -50,7 +50,7 @@ class ExameController {
             if (exame) {
                 return res.status(200).json({
                     message:"Exame encontrado",
-                    data:exame
+                    exames:exame
                 })
                 
             }
@@ -79,7 +79,7 @@ class ExameController {
 
             return res.status(200).json({
                 message:"Exame deletado",
-                data:exameDeletado
+                exames:exameDeletado
             }
         )
             
@@ -101,7 +101,7 @@ class ExameController {
 
             return res.status(201).json({
                 message: "Exame criado com sucesso",
-                data: usuarioCadastrado
+                exames: usuarioCadastrado
             })
 
         } catch (error) {
@@ -127,7 +127,7 @@ class ExameController {
 
             return res.status(200).json({
                 message:"Dados Atualizados",
-                data:dadosAtualizados
+                exames:dadosAtualizados
                 
             });
             

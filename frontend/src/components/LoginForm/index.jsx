@@ -7,6 +7,7 @@ import { Link, Navigate, useNavigate } from 'react-router'
 import axios from 'axios'
 import Modal from '../Modal'
 import RegisterUser from '../RegisterUser'
+import apiClient from '../../api/api'
 
 export const LoginForm = () => {
 
@@ -14,38 +15,46 @@ export const LoginForm = () => {
 
   const [password, setPassword] = useState('')
 
-  const { login,user } = useAuth()
+  const { login, user } = useAuth()
 
   const navigate = useNavigate()
 
   const [isModalOpen, setIsMotalOpen] = useState(false)
 
-  useEffect(()=>{
+  useEffect(() => {
     if (user) {
-         navigate('/dashboard')
-     }
+      navigate('/dashboard')
+    }
 
 
-  },[user,navigate])
+  }, [user, navigate])
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
-      const response = await axios.get('http://localhost:3000/users', {
-        params: { email, password }
+
+      const response = await apiClient.post('/login', {
+        email, senha: password
       })
+
+
       if (response.data.length === 0) {
+
         toast.error("Usuario não encontrado. Verifique o email e senha", { autoClose: 3000, hideProgressBar: true })
         return
       }
+
       toast.success("Login realizado com sucesso!", {
         autoClose: 2000
       }
       )
 
-      login(response.data[0].email)
+      localStorage.setItem("accessToken", response?.data?.accessToken)
+      localStorage.setItem("refreshToken", response?.data?.refreshToken)
+
+      login(email)
       navigate('/dashboard')
 
 

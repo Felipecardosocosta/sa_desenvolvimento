@@ -18,7 +18,7 @@ export class PacienteService {
         }
 
         return {
-            data: await this.repository.criar(dadosPaciente),
+            paciente: await this.repository.criar(dadosPaciente),
             message: "Usuario criado com sucesso"
         }
 
@@ -31,7 +31,7 @@ export class PacienteService {
         if (buscarDados.paciente.length === 0) {
 
             return {
-                data: buscarDados,
+                paciente: buscarDados,
                 message: "Não tem pacientes cadastrados"
             }
 
@@ -39,7 +39,7 @@ export class PacienteService {
         }
 
         return {
-            data: buscarDados,
+            paciente: buscarDados,
             message: "Pacientes encontrados"
         }
 
@@ -54,14 +54,14 @@ export class PacienteService {
         if (!pacienteBuscado?.cpf) {
 
             return {
-                data: pacienteBuscado,
+                paciente: pacienteBuscado,
                 message: "Paciente não encontrado"
             }
 
         }
 
         return {
-            data: pacienteBuscado,
+            paciente: pacienteBuscado,
             message: "Paciente encontrado"
         }
 
@@ -85,7 +85,7 @@ export class PacienteService {
         const atualizarDados = await this.repository.atualizar(dadosPaciente)
 
         return {
-            data: atualizarDados,
+            paciente: atualizarDados,
             message: "Paciente Atualizado"
         }
 
@@ -99,14 +99,14 @@ export class PacienteService {
         const pacienteParaDeletar = await this.repository.buscarPorId(id)
 
         if (!pacienteParaDeletar) return {
-            data: pacienteParaDeletar,
+            paciente: pacienteParaDeletar,
             message: "Paciente não encontrado"
         }
 
         const deletandoPaciente = await this.repository.deletar(id)
         
         return {
-            data: deletandoPaciente,
+            paciente: deletandoPaciente,
             message: "Paciente Deletado"
         }
 

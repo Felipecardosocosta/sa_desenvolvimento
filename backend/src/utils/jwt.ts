@@ -22,6 +22,7 @@ export function signTokenRefresh(payload: Partial<Usuario>) {
 }
 
 export function verificarTokenAcesso(token: string) {
+    console.log(jwt.verify(token, env.chaveAcesso))
     return jwt.verify(token, env.chaveAcesso)
 }
 export function verificarTokenRefresh(token: string) {

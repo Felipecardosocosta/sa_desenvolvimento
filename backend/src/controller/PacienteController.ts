@@ -17,7 +17,7 @@ class PacienteController {
         try {
             const pacienteBuscados = await this.service.buscarTodos(pagina,limite)
 
-            if (pacienteBuscados.data.paciente.length ===0) {
+            if (pacienteBuscados.paciente.paciente.length ===0) {
 
                 return res.status(200).json(pacienteBuscados)
                 

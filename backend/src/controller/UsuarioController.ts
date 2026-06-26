@@ -1,34 +1,21 @@
 import type { Response,Request } from "express";
+import { usuarioService, type UsuarioService } from "../services/UsuarioServices";
 import { log } from "node:console";
-import type { Prontuario } from "../prisma/generated/prisma/client";
-import { prontuarioService , type ProntuarioService} from "../services/ProntuarioServices";
+import type { Usuario } from "../prisma/generated/prisma/client";
 
-class ProntuarioController {
-    constructor(private readonly service: ProntuarioService) {
+class UsuarioController {
+    constructor(private readonly service: UsuarioService) {
         
     }
 
     async buscarTodos(req:Request,res:Response){
 
-        const pagina = req.query.pagina ? Number(req.query.pagina): undefined
-        const limite = req.query.limite ? Number(req.query.limite): undefined
-
         try {
-            const prontuarioBuscados = await this.service.buscarTodos(pagina,limite)
+            const usuariosBuscados = await this.service.buscarTodos()
 
-            if (prontuarioBuscados.prontuario.length===0) {
-
-                return res.status(200).json({
-                    message:"Nao tem prontuarios cadastrados",
-                    data:prontuarioBuscados
-                })
-                
-            }
-
-            
             return res.status(200).json({
-                message:"Prontuario encontradas",
-                data:prontuarioBuscados
+                message:"usuarios encontrados",
+                usuario:usuariosBuscados
             })
 
         } catch (error) {
@@ -45,12 +32,12 @@ class ProntuarioController {
 
         try {
             const id = Number(req.params.id)
-            const prontuario = await this.service.buscarPorId(id)
+            const usuarios = await this.service.buscarPorId(id)
 
-            if (prontuario) {
+            if (usuarios) {
                 return res.status(200).json({
-                    message:"Prontuario encontrada",
-                    data:prontuario
+                    message:"usuario encontrado",
+                    usuario:usuarios
                 })
                 
             }
@@ -75,11 +62,11 @@ class ProntuarioController {
 
             const id = Number(req.params.id)
 
-            const prontuarioDeletada = await this.service.deletar(id)
+            const usuarioDeletado = await this.service.deletar(id)
 
             return res.status(200).json({
-                message:"Prontuario deletada",
-                data:prontuarioDeletada
+                message:"usuario deletado",
+                usuario:usuarioDeletado
             }
         )
             
@@ -92,16 +79,16 @@ class ProntuarioController {
             
         }
     }
-    async criar(req: Request, res: Response) {
+    async criarUsuario(req: Request, res: Response) {
 
         try {
 
-            const dadosProntuario = req.body as Prontuario
-            const consultaCadastrada = await this.service.cadastrar(dadosProntuario)
+            const dadosUsuario = req.body as Usuario
+            const usuarioCadastrado = await this.service.cadastrar(dadosUsuario)
 
             return res.status(201).json({
-                message: "Prontuario criado com sucesso",
-                data: consultaCadastrada
+                message: "Usuario criado com sucesso",
+                usuario: usuarioCadastrado
             })
 
         } catch (error) {
@@ -121,13 +108,13 @@ class ProntuarioController {
 
         try {
             const id = Number(req.params)
-            const dadosParaAtualizar = req.body  as Omit<Prontuario, 'id'>
+            const dadosParaAtualizar = req.body as Omit<Usuario, "id">
 
             const dadosAtualizados = await this.service.atualizar({...dadosParaAtualizar,id})
 
             return res.status(200).json({
                 message:"Dados Atualizados",
-                data:dadosAtualizados
+                usuario:dadosAtualizados
                 
             });
             
@@ -144,4 +131,4 @@ class ProntuarioController {
 }
 
 
-export const prontuarioController = new ProntuarioController(prontuarioService)
+export const usuarioController = new UsuarioController(usuarioService)
