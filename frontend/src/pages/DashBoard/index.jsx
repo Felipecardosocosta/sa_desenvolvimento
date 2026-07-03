@@ -7,7 +7,7 @@ import PatientsList from '../../components/PatienstsList'
 const DashBoard = () => {
   return (
     <div >
-      <h1 className='text-xl font-bold text-cyan-800 mb-6'>Dashboard </h1>
+      <h1 className='text-xl font-bold text-cyan-800 dark:text-cyan-400 mb-6'>Dashboard </h1>
       
       <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
         <PatientCounter/>

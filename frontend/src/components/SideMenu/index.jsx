@@ -43,11 +43,11 @@ const SideMenu = () => {
 
     return (
         <aside
-            className={` bg-cyan-800 text-white flex flex-col justify-between transition-all duration-300 ${isCollapsed ? 'w-20' : 'w-64'
+            className={` bg-cyan-800 dark:bg-cyan-950 text-white flex flex-col justify-between transition-all duration-300 print:hidden ${isCollapsed ? 'w-14' : 'w-64'
                 }`}
         >
             {/* topo - botão toggle */}
-            <div className='p-4 flex items-center justify-between border-b border-cyan-700'>
+            <div className='p-4 flex items-center justify-between border-b border-cyan-700 dark:border-cyan-900'>
                 {
                     !isCollapsed && (
                         <h1 className='text-lg font-bold'>Clínica +</h1>
@@ -55,7 +55,7 @@ const SideMenu = () => {
                 }
                 <button
                     onClick={toggleMenu}
-                    className='text-white hover:text-cyan-300 focus:outline-none'
+                    className='text-white hover:text-cyan-300 focus:outline-none cursor-pointer'
                 >
                     {isCollapsed ? <MdMenu size={24} /> : <MdClose size={24} />}
                 </button>
@@ -149,7 +149,7 @@ const SideMenu = () => {
             </nav>
 
             {/* botao sair */}
-            <div className='p-4 border-t border-cyan-700'>
+            <div className='p-4 border-t border-cyan-700 dark:border-cyan-900'>
                 <button
                     onClick={handleLogout}
                     className='flex items-center gap-3 text-red-300 hover:text-red-500 w-full cursor-pointer'

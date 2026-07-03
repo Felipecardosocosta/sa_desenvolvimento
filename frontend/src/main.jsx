@@ -9,14 +9,16 @@ import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/ReactToastify.css'
 import { AuthProvider } from './contexts/AuthContext.jsx'
+import { ThemeProvider } from './contexts/ThemeContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-    <ToastContainer/>
-    <RouterProvider router={router}/>
-
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <ToastContainer/>
+        <RouterProvider router={router}/>
+      </AuthProvider>
+    </ThemeProvider>
   </StrictMode>,
 )

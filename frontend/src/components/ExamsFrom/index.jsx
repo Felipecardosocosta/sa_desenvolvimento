@@ -129,9 +129,9 @@ function ExamsForm() {
             <div className='mb-6'>
                 <label
                     htmlFor=""
-                    className='block text-sm font-semibold mb-2'
+                    className='block text-sm font-semibold mb-2  text-gray-800 dark:text-cyan-400'
                 >
-                    Buscar paciente para cadastrar a consulta
+                    Buscar paciente para cadastrar a exames
 
                 </label>
                 <input
@@ -139,7 +139,7 @@ function ExamsForm() {
                     value={searchTerm}
                     onChange={handleSearchChange}
                     placeholder='Digite o nome ou o registro do paciente'
-                    className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                     className='w-full  p-2 border border-gray-300 dark:border-slate-650 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-600 transition-colors'
                 />
 
             </div>
@@ -147,26 +147,51 @@ function ExamsForm() {
             <ul className='space-y-3'>
                 {
                     filteredPatients.map((patient) => (
-                        <li
+                         <li
                             key={patient.id}
-                            className='p-4 border rounded-lg shadow-sm flex justify-between items-center hover:bg-gray-50 transition'
+                            className='
+                            p-4 
+                            border 
+                            rounded-lg 
+                          bg-white
+                          dark:bg-slate-800
+                            border-gray-100 
+                            dark:border-slate-700
+
+                            shadow-sm 
+                            hover:shadow-md
+                            flex 
+                            justify-between 
+                            items-center 
+                            hover:bg-gray-50 
+                            hover:dark:bg-slate-700
+                            transition'
                         >
 
                             <div>
-                                <p className='text-sm'>
-                                    <strong>Registro:</strong> {patient.id}
+                                <p className="text-sm text-gray-550 dark:text-slate-400">
+                                    <strong className="text-gray-700 dark:text-slate-300">Registro:</strong> {patient.id}
                                 </p>
-                                <p className='text-sm'>
-                                    <strong>Nome:</strong> {patient.fullName}
+                                <p className="text-gray-700 dark:text-slate-300">
+                                    <strong className="text-gray-900 dark:text-slate-100" > Nome:</strong> {patient.fullName}
                                 </p>
-                                <p className='text-sm'>
-                                    <strong>Convênio:</strong> {patient.healthInsurance}
+                                <p className="text-gray-700 dark:text-slate-300">
+                                    <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient.healthInsurance}
                                 </p>
 
                             </div>
 
                             <button
-                                className='bg-cyan-700 text-white px-3 rounded-lg hover:bg-cyan-600 cursor-pointer'
+                                className='
+                                bg-cyan-700 
+                                text-white 
+                                px-3
+                                p-2 
+                                font-bold
+                                rounded-lg 
+                                hover:bg-cyan-600 
+                                transition-colors
+                                cursor-pointer'
                                 onClick={() => handleSelectPatient(patient)}
 
                             >

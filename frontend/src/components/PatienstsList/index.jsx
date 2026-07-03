@@ -64,19 +64,25 @@ const PatientsList = () => {
         setSearchTerm(e.target.value)
     }
 
-    const filteredPatients = patients.filter((patients) => [patients.fullName, patients.email, patients.phone].join(" ").toLowerCase().includes(searchTerm.toLowerCase()))
+    const filteredPatients = patients.filter((patient) => 
+        [patient.fullName, patient.email, patient.phone, patient.healthInsurance, patient.allergies]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase())
+    )
 
 
     return (
-        <div className='bg-white shadow rounded-2xl p-6 mt-8'>
-            <h2 className='text-xl font-semibold text-cyan-800 mb-4 '>
+        <div className='bg-white dark:bg-slate-800 shadow rounded-2xl p-6 mt-8 border border-transparent dark:border-slate-700 transition-colors duration-300'>
+            <h2 className='text-xl font-semibold text-cyan-800 dark:text-cyan-400 mb-4 '>
                 Informações de Pacientes
             </h2>
 
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3'> 
 
 
-            <label htmlFor="search" className='text-gray-700 font-medium'>
+            <label htmlFor="search" className='text-gray-700 dark:text-slate-350 font-medium'>
                 Buscar Paciente:
             </label>
             <input
@@ -84,8 +90,8 @@ const PatientsList = () => {
                 id='search'
                 value={searchTerm}
                 onChange={handleSearchChange}
-                placeholder='Digite o nome, email ou telefone'
-                className='border rounded-lg py-2 w-full sm:w-80 focus:ring-2 focus:ring-cyan-600 outline-none'
+                placeholder='Digite nome, e-mail, telefone, convênio ou alergias'
+                className='border border-gray-300 dark:border-slate-650 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 rounded-lg py-2 w-full sm:w-[450px] focus:ring-2 focus:ring-cyan-600 outline-none px-3 transition-colors'
                 />
 
             </div>
@@ -94,7 +100,7 @@ const PatientsList = () => {
 
                 {
                     filteredPatients.length > 0 ? (
-                        <ul className='divide-y divide-gray-200'>
+                        <ul className='divide-y divide-gray-200 dark:divide-slate-700/50'>
                             {
                                 filteredPatients.map((patient) => (
                                     <li
@@ -106,25 +112,25 @@ const PatientsList = () => {
                                             className='flex items-center gap-4'
                                         >
                                             <div
-                                                className='bg-cyan-100 text-cyan-700 rounded-full'
+                                                className='bg-cyan-100 dark:bg-slate-700 text-cyan-700 dark:text-cyan-400 rounded-full p-2.5'
                                             >
-                                                <FaUserAlt size={20} />
+                                                <FaUserAlt size={16} />
 
                                             </div>
 
                                             <div>
-                                                <p className='font-semibold text-gray-800'>{patient.fullName}</p>
-                                                <p className='text-sm text-gray-600'>{patient.email}</p>
-                                                <p className='text-sm text-gray-600'>{patient.phone}</p>
+                                                <p className='font-semibold text-gray-800 dark:text-slate-100'>{patient.fullName}</p>
+                                                <p className='text-sm text-gray-650 dark:text-slate-400'>{patient.email}</p>
+                                                <p className='text-sm text-gray-650 dark:text-slate-400'>{patient.phone}</p>
                                             </div>
                                         </div>
 
-                                        <div className='text-sm text-gray-600 mt-2 sm:mt-0 text-right'>
-                                            <p><strong>Idade:</strong>{ages[patient.id] || "-"}</p>
-                                            <p><strong>Plano:</strong>{patient.healthInsurance || "-"}</p>
+                                        <div className='text-sm text-gray-650 dark:text-slate-400 mt-2 sm:mt-0 text-right'>
+                                            <p><strong className="text-gray-700 dark:text-slate-300">Idade: </strong>{ages[patient.id] || "-"}</p>
+                                            <p><strong className="text-gray-700 dark:text-slate-300">Plano: </strong>{patient.healthInsurance || "-"}</p>
                                             <Link
                                                 to={`/paciente/${patient.id}`}
-                                                className='text-cyan-700'
+                                                className='text-cyan-700 dark:text-cyan-400 hover:underline font-semibold'
                                             >
                                                 Ver detalhes
                                             </Link>
@@ -137,7 +143,7 @@ const PatientsList = () => {
 
                             }
                         </ul>
-                    ) : (<p className='text-gray-500 text-center py-6' >Nenum paciente encontrado</p>)
+                    ) : (<p className='text-gray-500 dark:text-slate-400 text-center py-6' >Nenhum paciente encontrado</p>)
 
                 }
 

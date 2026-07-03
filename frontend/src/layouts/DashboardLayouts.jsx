@@ -1,16 +1,16 @@
-
 import { Outlet } from 'react-router'
+import { FaSun, FaMoon } from 'react-icons/fa'
 
 import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../contexts/ThemeContext'
 import SideMenu from '../components/SideMenu'
 
 const DashboardLayouts = () => {
-
     const { user, logout } = useAuth()
-
+    const { theme, toggleTheme } = useTheme()
 
     return (
-        <div className='flex min-h-screen bg-gray-100' >
+        <div className='flex min-h-screen bg-gray-100 dark:bg-slate-900 transition-colors duration-300 print:bg-white print:block' >
             {/* {barra lateral} */}
             
            <SideMenu/>
@@ -20,17 +20,26 @@ const DashboardLayouts = () => {
 
             <main className='flex-1 flex flex-col'>
 
-                <header className='flex justify-between items-center bg-white p-4 shadow'>
+                <header className='flex justify-between items-center bg-white dark:bg-slate-800 p-4 shadow transition-colors duration-300 print:hidden'>
 
-                    <h1 className='text-x1 font-bold text-cyan-800' >Palnei do Sistema</h1>
+                    <h1 className='text-xl font-bold text-cyan-800 dark:text-cyan-400' >Painel do Sistema</h1>
                     {
                         user && (
                             <div className='flex items-center gap-4 '>
-                                <span className='text-gray-700'>Bem Vindo, {user.email} </span>
+                                <span className='text-gray-700 dark:text-slate-300'>Bem Vindo, {user.email} </span>
+
+                                <button
+                                    onClick={toggleTheme}
+                                    className='p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors cursor-pointer'
+                                    title={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+                                    aria-label="Alternar tema"
+                                >
+                                    {theme === 'light' ? <FaMoon size={18} /> : <FaSun size={18} />}
+                                </button>
 
                                 <button
                                     onClick={logout}
-                                    className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition'
+                                    className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition cursor-pointer'
 
                                 >
                                     Sair
@@ -43,7 +52,7 @@ const DashboardLayouts = () => {
 
              {/* Paginas internar do dashboard */}
 
-             <section className='flex-1 p-6 overflow-y-auto'>
+             <section className='flex-1 p-6 overflow-y-auto print:p-0 print:overflow-visible'>
 
                 <Outlet/>
 

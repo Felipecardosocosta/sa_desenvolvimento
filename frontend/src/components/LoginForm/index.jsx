@@ -71,8 +71,8 @@ export const LoginForm = () => {
 
   return (
 
-    <div className='max-w-md mx-auto mt-10  bg-white p-8 rounded-xl shadow-lg'>
-      <h1 className='text-2x1 font-bold text-center mb-6' >Login</h1>
+    <div className='max-w-md w-full mx-auto bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg border border-transparent dark:border-slate-700 transition-colors duration-300'>
+      <h1 className='text-2xl font-bold text-center mb-6 text-cyan-800 dark:text-cyan-400' >Login</h1>
 
       <form onSubmit={handleSubmit}
         className='space-y-4'
@@ -112,7 +112,7 @@ export const LoginForm = () => {
 
       >
         <button
-          className='text-blue-600 hover:underline'
+          className='text-cyan-700 dark:text-cyan-400 hover:underline cursor-pointer'
           onClick={() => toast.info("Funcionalidade em desenvolvimento")}
         >
           Esqueceu sua senha?
@@ -122,7 +122,7 @@ export const LoginForm = () => {
 
         <button
           onClick={() => setIsMotalOpen(true)}
-          className='text-blue-600 hover:underline'
+          className='text-cyan-700 dark:text-cyan-400 hover:underline cursor-pointer'
         >
           Criar Conta
 

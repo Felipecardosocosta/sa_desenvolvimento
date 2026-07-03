@@ -23,15 +23,15 @@ const ExamsCounter = () => {
 
 
   return (
-    <div className='bg-white shadow rounded-lg p-6 flex flex-col items-center w-60'>
-            <h2 className='text-xl font-bold flex items-center gap-2'>
-                <BsClipboard2Pulse className='text-blue-600'/>
-                {examsCounter}
-    
-            </h2>
-            <p>Exames</p>
-    
-        </div>
+    <div className='bg-white dark:bg-slate-800 shadow rounded-lg p-6 flex flex-col items-center w-60 border border-transparent dark:border-slate-700 transition-colors duration-300'>
+        <h2 className='text-xl font-bold flex items-center gap-2 text-gray-800 dark:text-slate-100'>
+            <BsClipboard2Pulse className='text-blue-600 dark:text-blue-400'/>
+            {examsCounter}
+
+        </h2>
+        <p className='text-gray-650 dark:text-slate-400 font-medium'>Exames</p>
+
+    </div>
   )
 }
 
