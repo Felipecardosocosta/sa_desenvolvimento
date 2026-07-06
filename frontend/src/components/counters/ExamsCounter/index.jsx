@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { BsClipboard2Pulse } from "react-icons/bs"
+import apiClient from '../../../api/api'
 
 const ExamsCounter = () => {
     const [examsCounter,setExamsCounter] = useState(0)
@@ -8,10 +9,10 @@ const ExamsCounter = () => {
     useEffect(()=>{
         const fetchExams = async()=>{
             try {
-                const response = await axios.get('http://localhost:3000/exams')
+                const response = await apiClient.get('/exames')
 
 
-                setExamsCounter(response.data.length)
+                setExamsCounter(response.data.exames.length)
 
             } catch (error) {
                 console.error("Erro ao obter dados do exames ", error)

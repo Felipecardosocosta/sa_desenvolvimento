@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Modal from "../Modal"
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import apiClient from '../../api/api'
 
 function ExamsForm() {
 
@@ -24,10 +25,9 @@ function ExamsForm() {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/patients")
+                const response = await apiClient.get("/paciente")
 
-                setPatients(response.data)
-
+                setPatients(response.paciente.data)
 
 
 
@@ -50,7 +50,7 @@ function ExamsForm() {
 
     const filteredPatients = patients.filter(
         (patient) =>
-            patient.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            patient.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
             patient.id.toString().includes(searchTerm)
     )
 
@@ -89,6 +89,8 @@ function ExamsForm() {
 
         if (!selectedPatient) return
 
+        const datetimeString = `${formData.date}T${formData.time}`;
+        const localDateTime = new Date(datetimeString);
 
         try {
 
@@ -96,10 +98,15 @@ function ExamsForm() {
 
             const dataToSave = {
                 patientId: selectedPatient.id,
-                ...formData
+                tipo_exame:formData.name,
+                valor:0,
+                descricao: formData.laboratory,
+                resultado: formData.result,
+                data_exame: localDateTime.toISOString(),
+                
             }
 
-            await axios.post("http://localhost:3000/exams", dataToSave)
+            await apiClient.post("/exames", dataToSave)
 
             toast.success("Exame cadastrada com sucesso!", {
                 autoClose: 2000,
@@ -170,13 +177,13 @@ function ExamsForm() {
 
                             <div>
                                 <p className="text-sm text-gray-550 dark:text-slate-400">
-                                    <strong className="text-gray-700 dark:text-slate-300">Registro:</strong> {patient.id}
+                                    <strong className="text-gray-700 dark:text-slate-300">Registro:</strong> {patient?.id}
                                 </p>
                                 <p className="text-gray-700 dark:text-slate-300">
-                                    <strong className="text-gray-900 dark:text-slate-100" > Nome:</strong> {patient.fullName}
+                                    <strong className="text-gray-900 dark:text-slate-100" > Nome:</strong> {patient?.nome}
                                 </p>
                                 <p className="text-gray-700 dark:text-slate-300">
-                                    <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient.healthInsurance}
+                                    <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient?.healthInsurance}
                                 </p>
 
                             </div>
@@ -215,7 +222,7 @@ function ExamsForm() {
                     (
                         <>
                             <h2 className='text-lg font-bold mb-4 text-cyan-700  dark:text-cyan-400'>
-                                Cadastrar exame para {selectedPatient.fullName}
+                                Cadastrar exame para {selectedPatient.nome}
 
                             </h2>
 
@@ -224,7 +231,7 @@ function ExamsForm() {
                                     <strong >Email:</strong> {selectedPatient.email}
                                 </p>
                                 <p className='text-gray-800 dark:text-slate-100'>
-                                    <strong>Telefone:</strong> {selectedPatient.phone}
+                                    <strong>Telefone:</strong> {selectedPatient.telefone}
                                 </p>
 
                             </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Modal from "../Modal"
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import apiClient from '../../api/api'
 
 function ConsultarionForm() {
 
@@ -24,11 +25,9 @@ function ConsultarionForm() {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/patients")
+                const response = await apiClient.get("/paciente")
 
                 setPatients(response.data)
-
-
 
 
             } catch (error) {
@@ -50,7 +49,7 @@ function ConsultarionForm() {
 
     const filteredPatients = patients.filter(
         (patient) =>
-            patient.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            patient.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
             patient.id.toString().includes(searchTerm)
     )
 
@@ -89,17 +88,23 @@ function ConsultarionForm() {
 
         if (!selectedPatient) return
 
+        const datetimeString = `${formData.date}T${formData.time}`;
+        const localDateTime = new Date(datetimeString);
+
 
         try {
 
             setIsSaving(true)
 
             const dataToSave = {
-                patientId: selectedPatient.id,
-                ...formData
+                paciente_id: selectedPatient.id,
+                motivo: formData.reason,
+                data_consulta: localDateTime.toISOString(),
+                observaoes: formData.dosagePrecautions
+
             }
 
-            await axios.post("http://localhost:3000/consults", dataToSave)
+            await apiClient.post("/consulta", dataToSave)
 
             toast.success("Consulta cadastrada com sucesso!", {
                 autoClose: 2000,
@@ -170,13 +175,13 @@ function ConsultarionForm() {
 
                             <div>
                                 <p className="text-sm text-gray-550 dark:text-slate-400">
-                                    <strong className="text-gray-700 dark:text-slate-300">Registro:</strong> {patient.id}
+                                    <strong className="text-gray-700 dark:text-slate-300">Registro:</strong> {patient?.id}
                                 </p>
                                 <p className="text-gray-700 dark:text-slate-300">
-                                    <strong className="text-gray-900 dark:text-slate-100" > Nome:</strong> {patient.fullName}
+                                    <strong className="text-gray-900 dark:text-slate-100" > Nome:</strong> {patient?.nome}
                                 </p>
                                 <p className="text-gray-700 dark:text-slate-300">
-                                    <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient.healthInsurance}
+                                    <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient?.healthInsurance}
                                 </p>
 
                             </div>
@@ -215,7 +220,7 @@ function ConsultarionForm() {
                     (
                         <>
                             <h2 className='text-lg font-bold mb-4 text-cyan-700 dark:text-cyan-400'>
-                                Cadastrar consulta para {selectedPatient.fullName}
+                                Cadastrar consulta para {selectedPatient.nome}
                             </h2>
 
                             <div className='mb-4 text-sm text-gray-700'>
@@ -223,7 +228,7 @@ function ConsultarionForm() {
                                     <strong>Email:</strong> {selectedPatient.email}
                                 </p>
                                 <p className='text-gray-800 dark:text-slate-100'>
-                                    <strong>Telefone:</strong> {selectedPatient.phone}
+                                    <strong>Telefone:</strong> {selectedPatient.telefone}
                                 </p>
 
                             </div>
@@ -234,7 +239,7 @@ function ConsultarionForm() {
                             >
                                 <div>
 
-                                    <label htmlFor='reason' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
+                                    <label htmlFor='reason' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize '>
                                         Motivo da Consulta:
                                     </label>
 
@@ -252,7 +257,7 @@ function ConsultarionForm() {
                                 <div className='grid grid-cols-2 gap-4'>
                                     <div>
 
-                                        <label htmlFor='date' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1 dark:text-slate-300 capitalize mb-1'>
+                                        <label htmlFor='date' className='block text-sm font-medium mb-1  capitalize  dark:text-slate-300 '>
                                             Data:
                                         </label>
 
@@ -268,7 +273,7 @@ function ConsultarionForm() {
                                     </div>
                                     <div>
 
-                                        <label htmlFor='time' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
+                                        <label htmlFor='time' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize '>
                                             Hora:
                                         </label>
 
@@ -287,7 +292,7 @@ function ConsultarionForm() {
 
                                 <div>
 
-                                    <label htmlFor='description' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
+                                    <label htmlFor='description' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize'>
                                         Descrição do problema:
                                     </label>
 
@@ -298,7 +303,7 @@ function ConsultarionForm() {
                                         id="description"
                                         value={formData.description}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none dark:text-slate-300 capitalize mb-1 dark:text-slate-300 capitalize mb-1'
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none dark:text-slate-300 capitalize mb-1 '
                                         required
                                     />
                                 </div>
@@ -306,7 +311,7 @@ function ConsultarionForm() {
 
                                 <div>
 
-                                    <label htmlFor='medication' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
+                                    <label htmlFor='medication' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize '>
                                         Medicação Receitada:
                                     </label>
 
@@ -323,7 +328,7 @@ function ConsultarionForm() {
                                 </div>
                                 <div>
 
-                                    <label htmlFor='dosagePrecautions' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
+                                    <label htmlFor='dosagePrecautions' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize '>
                                         Dosagem e Precauções:
                                     </label>
 
@@ -348,7 +353,7 @@ function ConsultarionForm() {
                                         type='button'
                                         className='px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400  transition'
                                     >
-                                         Fechar
+                                        Fechar
 
                                     </button>
                                     <button

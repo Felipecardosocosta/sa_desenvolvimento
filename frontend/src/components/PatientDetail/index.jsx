@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import apiClient from '../../api/api'
 
 const PatientDetails = () => {
   const { id } = useParams()
@@ -38,15 +39,14 @@ const PatientDetails = () => {
   useEffect(() => {
     const fetchPatientDetails = async () => {
       try {
-        const patientRes = await axios.get(`http://localhost:3000/patients/${id}`)
-        const consultsRes = await axios.get(`http://localhost:3000/consults?patientId=${id}`)
-        const examsRes = await axios.get(`http://localhost:3000/exams?patientId=${id}`)
+        const patientRes = await apiClient.get(`/paciente/${id}`)
+        const consultsRes = await apiClient.get(`/consulta/patientId=${id}`)
+        const examsRes = await apiClient.get(`/exames/patientId=${id}`)
        
-        console.log(examsRes);
-        console.log(id);
-        setPatient(patientRes.data)
-        setConsults(consultsRes.data)
-        setExams(examsRes.data)
+        
+        setPatient(patientRes.data.paciente)
+        setConsults(consultsRes.data.consulta)
+        setExams(examsRes.data.exames)
       } catch (error) {
         console.error('Erro ao obter os detalhes do paciente:', error)
       }

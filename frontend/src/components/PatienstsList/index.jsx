@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { FaUserAlt } from "react-icons/fa"
 import { Link } from 'react-router'
+import apiClient from '../../api/api'
 
 const PatientsList = () => {
 
@@ -32,13 +33,13 @@ const PatientsList = () => {
 
         const fecthPatients = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/patients")
-                const patientsData = response.data
+                const response = await apiClient.get("/paciente")
+                const patientsData = response.data.paciente
                 const calculateAges = {}
 
                 patientsData.forEach(element => {
 
-                    calculateAges[element.id] = calculateAge(element.birthdate)
+                    calculateAges[element.id] = calculateAge(element.data_nascimento)
 
                 });
 
@@ -65,7 +66,7 @@ const PatientsList = () => {
     }
 
     const filteredPatients = patients.filter((patient) => 
-        [patient.fullName, patient.email, patient.phone, patient.healthInsurance, patient.allergies]
+        [patient.nome, patient.email, patient.telefone, patient?.healthInsurance, patient?.allergies]
             .filter(Boolean)
             .join(" ")
             .toLowerCase()
@@ -91,7 +92,7 @@ const PatientsList = () => {
                 value={searchTerm}
                 onChange={handleSearchChange}
                 placeholder='Digite nome, e-mail, telefone, convênio ou alergias'
-                className='border border-gray-300 dark:border-slate-650 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 rounded-lg py-2 w-full sm:w-[450px] focus:ring-2 focus:ring-cyan-600 outline-none px-3 transition-colors'
+                className='border border-gray-300 dark:border-slate-650 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 rounded-lg py-2 w-full sm:w-112.5 focus:ring-2 focus:ring-cyan-600 outline-none px-3 transition-colors'
                 />
 
             </div>
@@ -119,15 +120,15 @@ const PatientsList = () => {
                                             </div>
 
                                             <div>
-                                                <p className='font-semibold text-gray-800 dark:text-slate-100'>{patient.fullName}</p>
+                                                <p className='font-semibold text-gray-800 dark:text-slate-100'>{patient.nome}</p>
                                                 <p className='text-sm text-gray-650 dark:text-slate-400'>{patient.email}</p>
-                                                <p className='text-sm text-gray-650 dark:text-slate-400'>{patient.phone}</p>
+                                                <p className='text-sm text-gray-650 dark:text-slate-400'>{patient.telefone}</p>
                                             </div>
                                         </div>
 
                                         <div className='text-sm text-gray-650 dark:text-slate-400 mt-2 sm:mt-0 text-right'>
                                             <p><strong className="text-gray-700 dark:text-slate-300">Idade: </strong>{ages[patient.id] || "-"}</p>
-                                            <p><strong className="text-gray-700 dark:text-slate-300">Plano: </strong>{patient.healthInsurance || "-"}</p>
+                                            <p><strong className="text-gray-700 dark:text-slate-300">Plano: </strong>{patient?.healthInsurance || "-"}</p>
                                             <Link
                                                 to={`/paciente/${patient.id}`}
                                                 className='text-cyan-700 dark:text-cyan-400 hover:underline font-semibold'

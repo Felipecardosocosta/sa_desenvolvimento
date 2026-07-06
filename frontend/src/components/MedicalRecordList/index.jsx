@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import axios from "axios";
+import apiClient from "../../api/api";
 
 const MedicalRecordList = () => {
   const [patients, setPatients] = useState([]);
@@ -9,8 +10,8 @@ const MedicalRecordList = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/patients");
-        setPatients(response.data);
+        const response = await apiClient.get("/paciente");
+        setPatients(response.data.paciente);
       } catch (error) {
         console.error("Erro ao obter dados dos pacientes:", error);
       }
@@ -27,9 +28,9 @@ const MedicalRecordList = () => {
   const filteredPatients = patients.filter((patient) => {
     const term = searchTerm.toLowerCase();
     return (
-      patient.fullName.toLowerCase().includes(term) ||
+      patient.nome.toLowerCase().includes(term) ||
       patient.id.toString().includes(term) ||
-      (patient.phone && patient.phone.toLowerCase().includes(term)) ||
+      (patient.telefone && patient.telefone.toLowerCase().includes(term)) ||
       (patient.healthInsurance && patient.healthInsurance.toLowerCase().includes(term)) ||
       (patient.allergies && patient.allergies.toLowerCase().includes(term))
     );
@@ -78,10 +79,10 @@ const MedicalRecordList = () => {
                 <strong className="text-gray-700 dark:text-slate-300">Registro:</strong> {patient.id}
               </p>
               <p className="text-gray-700 dark:text-slate-300">
-                <strong className="text-gray-900 dark:text-slate-100">Nome:</strong> {patient.fullName}
+                <strong className="text-gray-900 dark:text-slate-100">Nome:</strong> {patient?.nome}
               </p>
               <p className="text-gray-700 dark:text-slate-300">
-                <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient.healthInsurance}
+                <strong className="text-gray-900 dark:text-slate-100">Convênio:</strong> {patient?.healthInsurance}
               </p>
               <Link
                 to={`/paciente/${patient.id}`}
