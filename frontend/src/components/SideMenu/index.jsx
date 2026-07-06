@@ -19,7 +19,7 @@ import { IMaskInput } from 'react-imask';
 
 
 
-const SideMenu = () => {
+const SideMenu = ({ isMobileOpen, onCloseMobile }) => {
     const navigate = useNavigate()
 
     const { logout } = useAuth()
@@ -30,34 +30,50 @@ const SideMenu = () => {
     // função do logout
     const handleLogout = () => {
         logout()
+        if (onCloseMobile) onCloseMobile()
         navigate('/')
     }
 
-    //função toggle menu
-
-    const toggleMenu = () => {
-        setIsCollapsed(!isCollapsed)
+    // função toggle menu ou fechar se for mobile
+    const handleToggleOrClose = () => {
+        if (isMobileOpen && onCloseMobile) {
+            onCloseMobile()
+        } else {
+            setIsCollapsed(!isCollapsed)
+        }
     }
 
+    // função para fechar o menu ao clicar em links (apenas se for mobile)
+    const handleLinkClick = () => {
+        if (onCloseMobile) {
+            onCloseMobile()
+        }
+    }
 
+    const showCloseIcon = isMobileOpen || !isCollapsed
+    const isMenuTextVisible = isMobileOpen || !isCollapsed
+
+    // Define as classes do container de forma responsiva
+    const sidebarClasses = isMobileOpen
+        ? 'fixed inset-0 z-50 w-full h-full flex bg-cyan-800 dark:bg-cyan-950 text-white flex-col justify-between transition-all duration-300 print:hidden'
+        : `bg-cyan-800 dark:bg-cyan-950 text-white flex-col justify-between transition-all duration-300 print:hidden hidden sm:flex ${
+              isCollapsed ? 'w-14' : 'w-64'
+          }`
 
     return (
-        <aside
-            className={` bg-cyan-800 dark:bg-cyan-950 text-white flex flex-col justify-between transition-all duration-300 print:hidden ${isCollapsed ? 'w-14' : 'w-64'
-                }`}
-        >
-            {/* topo - botão toggle */}
+        <aside className={sidebarClasses}>
+            {/* topo - botão toggle ou fechar no mobile */}
             <div className='p-4 flex items-center justify-between border-b border-cyan-700 dark:border-cyan-900'>
                 {
-                    !isCollapsed && (
+                    isMenuTextVisible && (
                         <h1 className='text-lg font-bold'>Clínica +</h1>
                     )
                 }
                 <button
-                    onClick={toggleMenu}
+                    onClick={handleToggleOrClose}
                     className='text-white hover:text-cyan-300 focus:outline-none cursor-pointer'
                 >
-                    {isCollapsed ? <MdMenu size={24} /> : <MdClose size={24} />}
+                    {showCloseIcon ? <MdClose size={24} /> : <MdMenu size={24} />}
                 </button>
             </div>
 
@@ -67,13 +83,14 @@ const SideMenu = () => {
                     <li>
                         <NavLink
                             to="/dashboard"
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <MdDashboard size={20} />
-                            {!isCollapsed && <span>Início</span>}
+                            {isMenuTextVisible && <span>Início</span>}
                         </NavLink>
 
 
@@ -81,13 +98,14 @@ const SideMenu = () => {
                     <li>
                         <NavLink
                             to="/prontuarios"
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <FaCalendarCheck size={20} />
-                            {!isCollapsed && <span>Prontuários</span>}
+                            {isMenuTextVisible && <span>Prontuários</span>}
                         </NavLink>
 
 
@@ -95,26 +113,28 @@ const SideMenu = () => {
                     <li>
                         <NavLink
                             to="/pacientes"
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <FaUserPlus size={20} />
-                            {!isCollapsed && <span>Registrar Paciente</span>}
+                            {isMenuTextVisible && <span>Registrar Paciente</span>}
                         </NavLink>
 
                     </li>
                     <li>
                         <NavLink
                             to="/consultas"
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <MdMenu size={20} />
-                            {!isCollapsed && <span>Consultas</span>}
+                            {isMenuTextVisible && <span>Consultas</span>}
                         </NavLink>
 
 
@@ -122,26 +142,28 @@ const SideMenu = () => {
                     <li>
                         <NavLink
                             to="/exames"
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <FaListAlt size={20} />
-                            {!isCollapsed && <span>Exames</span>}
+                            {isMenuTextVisible && <span>Exames</span>}
                         </NavLink>
 
                     </li>
                     <li>
                         <NavLink
                             to="/exames-list"
+                            onClick={handleLinkClick}
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
                                 }`
                             }
                         >
                             <FaListAlt size={20} />
-                            {!isCollapsed && <span>Lista Exames</span>}
+                            {isMenuTextVisible && <span>Lista Exames</span>}
                         </NavLink>
 
                     </li>
@@ -155,7 +177,7 @@ const SideMenu = () => {
                     className='flex items-center gap-3 text-red-300 hover:text-red-500 w-full cursor-pointer'
                 >
                     <MdExitToApp size={20} />
-                    {!isCollapsed && <span>Sair</span>}
+                    {isMenuTextVisible && <span>Sair</span>}
 
                 </button>
             </div>
