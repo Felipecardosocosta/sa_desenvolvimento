@@ -228,11 +228,11 @@ const PatientDetails = () => {
                 key={c.id}
                 className="border border-gray-200 dark:border-slate-700 rounded-xl p-4 mb-4 bg-gray-50 dark:bg-slate-800/50 hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-colors duration-200"
               >
-                <p className="text-gray-700 dark:text-slate-350"><strong>Consulta:</strong> {c.reason}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Data:</strong> {c.date} - {c.time}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Descrição:</strong> {c.description}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Medicação:</strong> {c.medication}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Dosagem e Precauções:</strong> {c.dosagePrecautions}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Consulta:</strong> {c.reason}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Data:</strong> {c.date} - {c.time}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Descrição:</strong> {c.description}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Medicação:</strong> {c.medication}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Dosagem e Precauções:</strong> {c.dosagePrecautions}</p>
                 <div className="flex gap-3 mt-3 print:hidden">
                   <button
                     onClick={() => handleEditConsult(c)}
@@ -313,12 +313,12 @@ const PatientDetails = () => {
                 key={exam.id}
                 className="border border-gray-200 dark:border-slate-700 rounded-xl p-4 mb-4 bg-gray-50 dark:bg-slate-800/50 hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-colors duration-200"
               >
-                <p className="text-gray-700 dark:text-slate-350"><strong>Exame:</strong> {exam.name}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Data:</strong> {exam.date} - {exam.time}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Tipo:</strong> {exam.type}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Laboratório:</strong> {exam.laboratory}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Documento:</strong> {exam.documentUrl}</p>
-                <p className="text-gray-700 dark:text-slate-355"><strong>Resultados:</strong> {exam.results}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Exame:</strong> {exam.name}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Data:</strong> {exam.date} - {exam.time}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Tipo:</strong> {exam.type}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Laboratório:</strong> {exam.laboratory}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Documento:</strong> {exam.documentUrl}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Resultados:</strong> {exam.results}</p>
                 <div className="flex gap-3 mt-3 print:hidden">
                   <button
                     onClick={() => handleEditExam(exam)}

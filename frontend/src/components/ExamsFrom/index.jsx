@@ -139,7 +139,7 @@ function ExamsForm() {
                     value={searchTerm}
                     onChange={handleSearchChange}
                     placeholder='Digite o nome ou o registro do paciente'
-                     className='w-full  p-2 border border-gray-300 dark:border-slate-650 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-600 transition-colors'
+                    className='w-full  p-2 border border-gray-300 dark:border-slate-650 bg-white dark:bg-slate-700 text-gray-900 dark:text-slate-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-600 transition-colors'
                 />
 
             </div>
@@ -147,7 +147,7 @@ function ExamsForm() {
             <ul className='space-y-3'>
                 {
                     filteredPatients.map((patient) => (
-                         <li
+                        <li
                             key={patient.id}
                             className='
                             p-4 
@@ -214,15 +214,16 @@ function ExamsForm() {
                     selectedPatient &&
                     (
                         <>
-                            <h2 className='text-lg font-bold mb-4 text-cyan-700'>
+                            <h2 className='text-lg font-bold mb-4 text-cyan-700  dark:text-cyan-400'>
                                 Cadastrar exame para {selectedPatient.fullName}
+
                             </h2>
 
                             <div className='mb-4 text-sm text-gray-700'>
-                                <p>
-                                    <strong>Email:</strong> {selectedPatient.email}
+                                <p className='text-gray-800 dark:text-slate-100'>
+                                    <strong >Email:</strong> {selectedPatient.email}
                                 </p>
-                                <p>
+                                <p className='text-gray-800 dark:text-slate-100'>
                                     <strong>Telefone:</strong> {selectedPatient.phone}
                                 </p>
 
@@ -234,7 +235,7 @@ function ExamsForm() {
                             >
                                 <div>
 
-                                    <label htmlFor='name' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='name' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                         Nome do Exame:
                                     </label>
 
@@ -244,7 +245,8 @@ function ExamsForm() {
                                         id="name"
                                         value={formData.reason}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none  dark:border-slate-100 
+                                         dark:text-slate-100'
                                         required
                                     />
                                 </div>
@@ -252,7 +254,7 @@ function ExamsForm() {
                                 <div className='grid grid-cols-2 gap-4'>
                                     <div>
 
-                                        <label htmlFor='date' className='block text-sm font-medium mb-1'>
+                                        <label htmlFor='date' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                             Data:
                                         </label>
 
@@ -262,13 +264,13 @@ function ExamsForm() {
                                             id="date"
                                             value={formData.date}
                                             onChange={handleInputChange}
-                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:border-slate-100  dark:text-slate-100'
                                             required
                                         />
                                     </div>
                                     <div>
 
-                                        <label htmlFor='time' className='block text-sm font-medium mb-1'>
+                                        <label htmlFor='time' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                             Hora:
                                         </label>
 
@@ -278,7 +280,7 @@ function ExamsForm() {
                                             id="time"
                                             value={formData.time}
                                             onChange={handleInputChange}
-                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:border-slate-100  dark:text-slate-100'
                                             required
                                         />
                                     </div>
@@ -287,18 +289,18 @@ function ExamsForm() {
 
                                 <div>
 
-                                    <label htmlFor='type' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='type' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                         Tipo de exame:
                                     </label>
 
                                     <input
-        
+
                                         type="text"
                                         name="type"
                                         id="type"
                                         value={formData.description}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none'
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none dark:border-slate-100  dark:text-slate-100'
                                         required
                                     />
                                 </div>
@@ -306,7 +308,7 @@ function ExamsForm() {
 
                                 <div>
 
-                                    <label htmlFor='laboratory' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='laboratory' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                         Laboratorio:
                                     </label>
 
@@ -317,13 +319,13 @@ function ExamsForm() {
                                         id="laboratory"
                                         value={formData.medication}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none '
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:border-slate-100  dark:text-slate-100 '
                                         required
                                     />
                                 </div>
                                 <div>
 
-                                    <label htmlFor='documentUrl' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='documentUrl' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                         Url do documento:
                                     </label>
 
@@ -334,13 +336,13 @@ function ExamsForm() {
                                         id="documentUrl"
                                         value={formData.dosagePrecautions}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none '
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:border-slate-100  dark:text-slate-100'
                                         required
                                     />
                                 </div>
                                 <div>
 
-                                    <label htmlFor='result' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='result' className="block text-sm font-medium text-gray-700 dark:text-slate-300 capitalize mb-1">
                                         Resultado:
                                     </label>
 
@@ -351,7 +353,7 @@ function ExamsForm() {
                                         id="result"
                                         value={formData.dosagePrecautions}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none'
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none dark:border-slate-100  dark:text-slate-100'
                                         required
                                     />
                                 </div>

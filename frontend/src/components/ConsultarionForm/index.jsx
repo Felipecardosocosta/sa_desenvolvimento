@@ -214,15 +214,15 @@ function ConsultarionForm() {
                     selectedPatient &&
                     (
                         <>
-                            <h2 className='text-lg font-bold mb-4 text-cyan-700'>
+                            <h2 className='text-lg font-bold mb-4 text-cyan-700 dark:text-cyan-400'>
                                 Cadastrar consulta para {selectedPatient.fullName}
                             </h2>
 
                             <div className='mb-4 text-sm text-gray-700'>
-                                <p>
+                                <p className='text-gray-800 dark:text-slate-100'>
                                     <strong>Email:</strong> {selectedPatient.email}
                                 </p>
-                                <p>
+                                <p className='text-gray-800 dark:text-slate-100'>
                                     <strong>Telefone:</strong> {selectedPatient.phone}
                                 </p>
 
@@ -234,7 +234,7 @@ function ConsultarionForm() {
                             >
                                 <div>
 
-                                    <label htmlFor='reason' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='reason' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
                                         Motivo da Consulta:
                                     </label>
 
@@ -244,7 +244,7 @@ function ConsultarionForm() {
                                         id="reason"
                                         value={formData.reason}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:text-slate-300 capitalize mb-1'
                                         required
                                     />
                                 </div>
@@ -252,7 +252,7 @@ function ConsultarionForm() {
                                 <div className='grid grid-cols-2 gap-4'>
                                     <div>
 
-                                        <label htmlFor='date' className='block text-sm font-medium mb-1'>
+                                        <label htmlFor='date' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1 dark:text-slate-300 capitalize mb-1'>
                                             Data:
                                         </label>
 
@@ -262,13 +262,13 @@ function ConsultarionForm() {
                                             id="date"
                                             value={formData.date}
                                             onChange={handleInputChange}
-                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:text-slate-300 capitalize mb-1'
                                             required
                                         />
                                     </div>
                                     <div>
 
-                                        <label htmlFor='time' className='block text-sm font-medium mb-1'>
+                                        <label htmlFor='time' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
                                             Hora:
                                         </label>
 
@@ -278,7 +278,7 @@ function ConsultarionForm() {
                                             id="time"
                                             value={formData.time}
                                             onChange={handleInputChange}
-                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none'
+                                            className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:text-slate-300 capitalize mb-1'
                                             required
                                         />
                                     </div>
@@ -287,7 +287,7 @@ function ConsultarionForm() {
 
                                 <div>
 
-                                    <label htmlFor='description' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='description' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
                                         Descrição do problema:
                                     </label>
 
@@ -298,7 +298,7 @@ function ConsultarionForm() {
                                         id="description"
                                         value={formData.description}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none'
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none resize-none dark:text-slate-300 capitalize mb-1 dark:text-slate-300 capitalize mb-1'
                                         required
                                     />
                                 </div>
@@ -306,7 +306,7 @@ function ConsultarionForm() {
 
                                 <div>
 
-                                    <label htmlFor='medication' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='medication' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
                                         Medicação Receitada:
                                     </label>
 
@@ -317,13 +317,13 @@ function ConsultarionForm() {
                                         id="medication"
                                         value={formData.medication}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none '
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:text-slate-300 capitalize mb-1 '
                                         required
                                     />
                                 </div>
                                 <div>
 
-                                    <label htmlFor='dosagePrecautions' className='block text-sm font-medium mb-1'>
+                                    <label htmlFor='dosagePrecautions' className='block text-sm font-medium mb-1 dark:text-slate-300 capitalize mb-1'>
                                         Dosagem e Precauções:
                                     </label>
 
@@ -334,7 +334,7 @@ function ConsultarionForm() {
                                         id="dosagePrecautions"
                                         value={formData.dosagePrecautions}
                                         onChange={handleInputChange}
-                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none '
+                                        className='w-full p-2 border rounded-lg focus:ring-cyan-600 outline-none dark:text-slate-300 capitalize mb-1 '
                                         required
                                     />
                                 </div>

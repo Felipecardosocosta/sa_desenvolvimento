@@ -39,14 +39,14 @@
   ],
   "consults": [
     {
-      "patientId": "1",
+      "patientId": 1,
       "reason": "Consulta de rotina",
       "date": "2023-03-15",
       "time": "10:00",
       "description": "Consulta de rotina",
       "medication": "Paracetamol",
       "dosagePrecautions": "Tomar 1 comprimido a cada 8 horas",
-      "id": "1"
+      "id": 1
     },
     {
       "patientId": "1",
