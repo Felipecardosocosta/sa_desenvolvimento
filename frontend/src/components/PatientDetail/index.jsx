@@ -40,8 +40,8 @@ const PatientDetails = () => {
     const fetchPatientDetails = async () => {
       try {
         const patientRes = await apiClient.get(`/paciente/${id}`)
-        const consultsRes = await apiClient.get(`/consulta/patientId=${id}`)
-        const examsRes = await apiClient.get(`/exames/patientId=${id}`)
+        const consultsRes = await apiClient.get(`/consulta/${id}`)
+        const examsRes = await apiClient.get(`/exames/${id}`)
        
         
         setPatient(patientRes.data.paciente)

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 import { IMaskInput } from 'react-imask';
+import apiClient from '../../api/api';
 
 function RegisterFormPatient() {
     const [formData, setFormData] = useState({
@@ -140,7 +141,15 @@ function RegisterFormPatient() {
         setIsSaving(true)
 
         try {
-            await axios.post("http://localhost:3000/patients", formData)
+            await apiClient.post("/paciente", {
+                nome: formData.fullName,
+                cpf: formData.cpf,
+                telefone: formData.phone,
+                email: formData.email,
+                data_nascimento: new Date(formData.birthdate),
+                sexo: formData.gender,
+                responsavel: formData.emergencyContact,
+            })
 
             toast.success("Paciente cadastrado com sucesso!", {
                 autoClose: 2000,
@@ -181,7 +190,12 @@ function RegisterFormPatient() {
                 autoClose: 2000,
                 hideProgressBar: true
             })
+
+            setIsSaving(false)
+
         }
+
+
     }
 
 

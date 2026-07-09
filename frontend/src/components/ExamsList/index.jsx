@@ -14,7 +14,10 @@ const ExamsList = () => {
         const fethExames = async () => {
             try {
                 const response = await apiClient.get(`/exames?pagina=${page}&limite=${limite}`)
+                
+                
                 if (response.data) {
+                    
                     setExams(response.data.exames)
                     setTotal(response.data.total)
                     setTotalPagina(response.data.totalPaginas)

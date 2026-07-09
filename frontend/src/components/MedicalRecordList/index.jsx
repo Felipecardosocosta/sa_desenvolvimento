@@ -11,8 +11,13 @@ const MedicalRecordList = () => {
     const fetchPatients = async () => {
       try {
         const response = await apiClient.get("/paciente");
-        setPatients(response.data.paciente);
+
+        
+        setPatients(response.data.paciente.paciente);
       } catch (error) {
+
+        console.log(error);
+        
         console.error("Erro ao obter dados dos pacientes:", error);
       }
 
@@ -24,6 +29,7 @@ const MedicalRecordList = () => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
 
   const filteredPatients = patients.filter((patient) => {
     const term = searchTerm.toLowerCase();

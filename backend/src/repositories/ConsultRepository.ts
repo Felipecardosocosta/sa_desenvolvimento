@@ -32,9 +32,9 @@ export class ConsultRepository {
     }
     async buscarPorId(id: number) {
 
-        return await this.prisma.consulta.findUnique({
+        return await this.prisma.consulta.findMany({
             where: {
-                id: id
+                paciente_id: id
             }
         });
     }

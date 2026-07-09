@@ -27,7 +27,9 @@ function ConsultarionForm() {
             try {
                 const response = await apiClient.get("/paciente")
 
-                setPatients(response.data)
+               
+                
+                setPatients(response.data.paciente.paciente)
 
 
             } catch (error) {
@@ -47,12 +49,14 @@ function ConsultarionForm() {
         setSearchTerm(e.target.value)
     }
 
-    const filteredPatients = patients.filter(
+    const filteredPatients = patients?.filter(
         (patient) =>
             patient.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
             patient.id.toString().includes(searchTerm)
     )
 
+    
+    
     const handleSelectPatient = (patient) => {
         setSelectedPatient(patient)
         setIsModalOpen(true)
@@ -151,7 +155,7 @@ function ConsultarionForm() {
 
             <ul className='space-y-3'>
                 {
-                    filteredPatients.map((patient) => (
+                    filteredPatients?.map((patient) => (
                         <li
                             key={patient.id}
                             className='

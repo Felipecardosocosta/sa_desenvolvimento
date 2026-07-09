@@ -53,7 +53,7 @@ const RegisterUser = () => {
 
         } catch (error) {
             console.error(error)
-            toast.error("Erro ao criar usaurio! ", {
+            toast.error("Erro ao criar Usuario! ", {
                 autoClose: 2000,
                 hideProgressBar: true
             })
@@ -67,7 +67,7 @@ const RegisterUser = () => {
 
 
         <div
-            className='w-full max-w-md p-6 bg-white rounded-xl '
+            className='w-full max-w-md p-6 bg-white dark:bg-transparent rounded-xl '
 
         >
             <h2
@@ -127,8 +127,8 @@ const RegisterUser = () => {
                         disabled={isSaving}
                         className={`w-full p-2 rounded-lg text-white mt-4 ${isSaving ?
                             'bg-gray-400 cursor-not-allowed' :
-                            "bg-blue-600 hover:bg-blue-700 cursor-pointer"
-                            } transition-colors`}
+                            "bg-cyan-700 hover:bg-cyan-800 cursor-pointer"
+                             } transition-colors`}
 
                     >
                         {isSaving ? "Salvando ...." : "Criar Usuario"}

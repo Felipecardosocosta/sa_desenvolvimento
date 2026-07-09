@@ -34,7 +34,7 @@ const PatientsList = () => {
         const fecthPatients = async () => {
             try {
                 const response = await apiClient.get("/paciente")
-                const patientsData = response.data.paciente
+                const patientsData = response.data.paciente.paciente
                 const calculateAges = {}
 
                 patientsData.forEach(element => {

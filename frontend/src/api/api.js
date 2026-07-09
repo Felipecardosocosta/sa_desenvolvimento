@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'http://98.93.61.52:3000/',
+    baseURL: 'http://localhost:3000/',
 });
 
 

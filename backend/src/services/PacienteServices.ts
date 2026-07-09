@@ -31,7 +31,7 @@ export class PacienteService {
         if (buscarDados.paciente.length === 0) {
 
             return {
-                paciente: buscarDados,
+                dados: buscarDados,
                 message: "Não tem pacientes cadastrados"
             }
 
