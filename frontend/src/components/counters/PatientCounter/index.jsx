@@ -14,7 +14,7 @@ const PatientCounter = () => {
                 const response = await apiClient.get('/paciente')
  
             
-                setPatientCounter(response.data.paciente.paciente.length)
+                setPatientCounter(response.data.dados.paciente.length)
 
             } catch (error) {
                 console.error("Erro ao obter dados do pacientes ", error)

@@ -58,12 +58,12 @@ const PatientDetails = () => {
   const handleEditConsult = (consult) => {
     setEditingConsult(consult)
     setEditConsultData({
-      reason: consult.reason,
-      date: consult.date,
-      time: consult.time,
-      description: consult.description,
-      medication: consult.medication,
-      dosagePrecautions: consult.dosagePrecautions,
+      reason: consult.motivo,
+      date: consult.data_consulta,
+      time: "",
+      description: '',
+      medication: '',
+      dosagePrecautions: consult.observacoes,
     })
     setIsEditingConsult(true)
   }
@@ -75,10 +75,12 @@ const PatientDetails = () => {
 
       const updatedConsult = {
         ...editingConsult,
-        ...editConsultData,
+        motivo:editConsultData.reason,
+        data_consulta:editConsultData.date,
+        observacoes:editConsultData.dosagePrecautions
       }
 
-      await axios.put(`http://localhost:3000/consults/${editingConsult.id}`, updatedConsult)
+      await apiClient.put(`/consulta/${editingConsult.id}`, updatedConsult)
       setConsults((prev) =>
         prev.map((c) => (c.id === editingConsult.id ? updatedConsult : c))
       )
@@ -104,13 +106,13 @@ const PatientDetails = () => {
   const handleEditExam = (exam) => {
     setEditingExam(exam)
     setEditExamData({
-      name: exam.name,
+      name: exam.tipo_exame,
       date: exam.date,
       time: exam.time,
       type: exam.type,
-      laboratory: exam.laboratory,
+      laboratory: exam.descricao,
       documentUrl: exam.documentUrl,
-      results: exam.results,
+      results: exam.resultado,
     })
     setIsEditingExam(true)
   }
@@ -167,15 +169,15 @@ const PatientDetails = () => {
 
         {/* Cartão de Informações Pessoais */}
         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-md p-6 mb-8 border border-gray-100 dark:border-slate-700 transition-colors duration-300">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-100 mb-4">{patient.fullName}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-100 mb-4">{patient.nome}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm sm:text-base text-gray-700 dark:text-slate-300">
-            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Convênio:</span> {patient.healthInsurance || '-'}</p>
-            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Alergias:</span> {patient.allergies || '-'}</p>
-            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Telefone:</span> {patient.phone || '-'}</p>
+            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Convênio:</span> {patient?.healthInsurance || '-'}</p>
+            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Alergias:</span> {patient?.allergies || '-'}</p>
+            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Telefone:</span> {patient.telefone || '-'}</p>
             <p><span className="font-semibold text-gray-800 dark:text-slate-100">E-mail:</span> {patient.email || '-'}</p>
             <p><span className="font-semibold text-gray-800 dark:text-slate-100">CPF:</span> {patient.cpf || '-'}</p>
             <p><span className="font-semibold text-gray-800 dark:text-slate-100">RG:</span> {patient.rg || '-'}</p>
-            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Contato de Emergência:</span> {patient.emergencyContact || '-'}</p>
+            <p><span className="font-semibold text-gray-800 dark:text-slate-100">Contato de Emergência:</span> {patient.responsavel || '-'}</p>
           </div>
         </div>
 
@@ -228,11 +230,11 @@ const PatientDetails = () => {
                 key={c.id}
                 className="border border-gray-200 dark:border-slate-700 rounded-xl p-4 mb-4 bg-gray-50 dark:bg-slate-800/50 hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-colors duration-200"
               >
-                <p className="text-gray-700 dark:text-slate-100"><strong>Consulta:</strong> {c.reason}</p>
-                <p className="text-gray-700 dark:text-slate-100"><strong>Data:</strong> {c.date} - {c.time}</p>
-                <p className="text-gray-700 dark:text-slate-100"><strong>Descrição:</strong> {c.description}</p>
-                <p className="text-gray-700 dark:text-slate-100"><strong>Medicação:</strong> {c.medication}</p>
-                <p className="text-gray-700 dark:text-slate-100"><strong>Dosagem e Precauções:</strong> {c.dosagePrecautions}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Consulta:</strong> {c.motivo}</p>
+                <p className="text-gray-700 dark:text-slate-100"><strong>Data:</strong> {c.data_consulta} - {c.time}</p>
+                {/* <p className="text-gray-700 dark:text-slate-100"><strong>Descrição:</strong> {c.description}</p> */}
+                {/* <p className="text-gray-700 dark:text-slate-100"><strong>Medicação:</strong> {c.medication}</p> */}
+                <p className="text-gray-700 dark:text-slate-100"><strong>Dosagem e Precauções:</strong> {c.observacoes}</p>
                 <div className="flex gap-3 mt-3 print:hidden">
                   <button
                     onClick={() => handleEditConsult(c)}

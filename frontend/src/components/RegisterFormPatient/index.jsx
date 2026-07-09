@@ -158,15 +158,15 @@ function RegisterFormPatient() {
 
             setFormData({
                 fullName: "",
-                gender: "",
-                birthdate: "",
                 cpf: "",
-                rg: "",
-                maritalStatus: "",
                 phone: "",
                 email: "",
-                birthplace: "",
+                birthdate: "",
+                gender: "",
                 emergencyContact: "",
+                rg: "",
+                maritalStatus: "",
+                birthplace: "",
                 allergies: "",
                 specialCare: "",
                 healthInsurance: "",
@@ -280,7 +280,7 @@ function RegisterFormPatient() {
 
 
                 {/* RG */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='rg' className='block text-sm font-medium mb-1'>RG:</label>
                     <input
                         type='text'
@@ -291,12 +291,12 @@ function RegisterFormPatient() {
                         required
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* Estado Civil */}
 
-                <fieldset>
+                {/* <fieldset>
 
                     <label htmlFor='maritalStatus' className='block text-sm font-medium mb-1'>Estado Civil</label>
 
@@ -315,7 +315,7 @@ function RegisterFormPatient() {
 
                     </select>
 
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* telefone */}
@@ -362,7 +362,7 @@ function RegisterFormPatient() {
 
 
                 {/* Naturalidade */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='birthplace' className='block text-sm font-medium mb-1'>Naturalidade:</label>
                     <input
                         type='text'
@@ -373,11 +373,11 @@ function RegisterFormPatient() {
                         required
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* Alergias */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='allergies' className='block text-sm font-medium mb-1'>Alergias?</label>
                     <input
                         type='text'
@@ -387,11 +387,11 @@ function RegisterFormPatient() {
                         onChange={handleInputChange}
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* Cuidados especiais */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='specialCare' className='block text-sm font-medium mb-1'>Cuidados Especiais?</label>
                     <input
                         type='text'
@@ -401,11 +401,11 @@ function RegisterFormPatient() {
                         onChange={handleInputChange}
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* Convênio */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='healthInsurance' className='block text-sm font-medium mb-1'>Convênio</label>
                     <input
                         type='text'
@@ -415,11 +415,11 @@ function RegisterFormPatient() {
                         onChange={handleInputChange}
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* Número do Convênio */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='insuranceNumber' className='block text-sm font-medium mb-1'>Número do Convênio</label>
                     <input
                         type='text'
@@ -429,11 +429,11 @@ function RegisterFormPatient() {
                         onChange={handleInputChange}
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* Validade do Convênio */}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor='insuranceValidity' className='block text-sm font-medium mb-1'>Validade do Convênio</label>
                     <input
                         type='date'
@@ -443,7 +443,7 @@ function RegisterFormPatient() {
                         onChange={handleInputChange}
                         className='w-full border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-950 dark:text-slate-100 p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none transition-colors'
                     />
-                </fieldset>
+                </fieldset> */}
 
 
                 {/* CEP */}

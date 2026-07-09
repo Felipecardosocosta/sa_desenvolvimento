@@ -29,7 +29,7 @@ function ConsultarionForm() {
 
                
                 
-                setPatients(response.data.paciente.paciente)
+                setPatients(response.data.dados.paciente)
 
 
             } catch (error) {
@@ -104,7 +104,7 @@ function ConsultarionForm() {
                 paciente_id: selectedPatient.id,
                 motivo: formData.reason,
                 data_consulta: localDateTime.toISOString(),
-                observaoes: formData.dosagePrecautions
+                observacoes: formData.dosagePrecautions
 
             }
 

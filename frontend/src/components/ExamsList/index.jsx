@@ -18,9 +18,9 @@ const ExamsList = () => {
                 
                 if (response.data) {
                     
-                    setExams(response.data.exames)
-                    setTotal(response.data.total)
-                    setTotalPagina(response.data.totalPaginas)
+                    setExams(response.data.exames.exames)
+                    setTotal(response.data.exames.total)
+                    setTotalPagina(response.data.exames.totalPaginas)
                 }
             } catch (error) {
                 console.log(error.response)
@@ -32,7 +32,7 @@ const ExamsList = () => {
 
     return (
         <>
-            <div>Lista de exames</div>
+            <div className='dark:text-white'>Lista de exames</div>
             {
                 exams?.length ? (
                     <>
@@ -75,7 +75,7 @@ const ExamsList = () => {
                         </div>
                     </>
                 ) : (
-                    <span>Sem dados!</span>
+                    <span className='dark:text-white'>Sem dados!</span>
                 )
             }
         </>

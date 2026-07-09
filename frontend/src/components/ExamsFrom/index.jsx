@@ -27,7 +27,7 @@ function ExamsForm() {
             try {
                 const response = await apiClient.get("/paciente")
 
-                setPatients(response.data.paciente.paciente)
+                setPatients(response.data.dados.paciente)
 
             } catch (error) {
 

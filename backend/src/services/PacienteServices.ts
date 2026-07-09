@@ -39,7 +39,7 @@ export class PacienteService {
         }
 
         return {
-            paciente: buscarDados,
+            dados: buscarDados,
             message: "Pacientes encontrados"
         }
 
