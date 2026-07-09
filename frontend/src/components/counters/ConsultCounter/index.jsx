@@ -14,7 +14,7 @@ const ConsultCounter = () => {
                 const response = await apiClient.get('/consulta')
 
             
-                setConsultsCounter(response.data.consulta.length)
+                setConsultsCounter(response.data.consulta.consulta.length)
 
             } catch (error) {
                 console.error("Erro ao obter dados do consulta ", error)

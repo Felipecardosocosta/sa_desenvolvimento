@@ -12,7 +12,7 @@ const ExamsCounter = () => {
                 const response = await apiClient.get('/exames')
 
 
-                setExamsCounter(response.data.exames.length)
+                setExamsCounter(response.data.exames.exames.length)
 
             } catch (error) {
                 console.error("Erro ao obter dados do exames ", error)

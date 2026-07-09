@@ -36,9 +36,9 @@ const ExamsList = () => {
             {
                 exams?.length ? (
                     <>
-                        <table>
-                            <thead>
-                                <tr>
+                        <table className="min-w-full border-collapse bg-white dark:bg-slate-800 text-left text-sm text-gray-500 dark:text-gray-400" >
+                            <thead className="bg-gray-50 dark:bg-slate-700">
+                                <tr className="border-b dark:border-gray-700">
                                     <th>ID</th>
                                     <th>Tipo de Exame</th>
                                     <th>Descrição</th>
@@ -47,9 +47,9 @@ const ExamsList = () => {
                                     <th>Resultado</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y divide-gray-100 border-t border-gray-100 dark:divide-gray-700 dark:border-gray-700">
                                 {exams.map((exame) => (
-                                    <tr>
+                                    <tr key={exame.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                                         <td>{exame.id}</td>
                                         <td>{exame.tipo_exame}</td>
                                         <td>{exame.descricao}</td>
